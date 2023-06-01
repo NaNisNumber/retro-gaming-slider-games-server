@@ -50,3 +50,12 @@ request(gameOptionsReq, function (error, response, body) {
     randomSliderGames = sliderGamesData;
   }
 });
+
+const serverForSendingSliderGames = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "application/json");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.end(JSON.stringify(randomSliderGames));
+});
+
+serverForSendingSliderGames.listen(process.env.PORT || 5001, () => {});
