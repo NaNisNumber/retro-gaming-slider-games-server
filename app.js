@@ -36,8 +36,8 @@ const getSliderGameData = (gameData) => {
       "thumb",
       "cover_big"
     );
-    const gameId = gameData[randomGameIndex].id;
-    return { id: gameId, imgUrl: sliderGameImgUrl };
+
+    return { ...gameData, imgUrl: sliderGameImgUrl };
   });
   return sliderGamesData;
 };
