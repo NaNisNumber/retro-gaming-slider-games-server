@@ -32,12 +32,9 @@ function generateRandomGameIndexes() {
 
 const getSliderGameData = (gameData) => {
   const sliderGamesData = randomGameIndexes.map((randomGameIndex) => {
-    const sliderGameImgUrl = gameData[randomGameIndex].cover.url.replace(
-      "thumb",
-      "cover_big"
-    );
-
-    return { ...gameData, imgUrl: sliderGameImgUrl };
+    const randomGame = gameData[randomGameIndex];
+    const sliderGameImgUrl = randomGame.cover.url.replace("thumb", "cover_big");
+    return { ...randomGame, imgUrl: sliderGameImgUrl };
   });
   return sliderGamesData;
 };
