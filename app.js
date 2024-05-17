@@ -1,5 +1,6 @@
 const request = require("request");
 const http = require("http");
+const port = process.env.PORT || 3000;
 let randomSliderGames;
 
 const gameOptionsReq = {
@@ -56,4 +57,4 @@ const serverForSendingSliderGames = http.createServer((req, res) => {
   res.end(JSON.stringify(randomSliderGames));
 });
 
-serverForSendingSliderGames.listen(5002);
+serverForSendingSliderGames.listen(port, "0.0.0.0");
