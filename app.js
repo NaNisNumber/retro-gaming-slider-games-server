@@ -8,7 +8,7 @@ const gameOptionsReq = {
   headers: {
     "Content-Type": "application/json",
     "Client-ID": "vb838qqqsndwhxbu1gg98ljvtavacr",
-    Authorization: "Bearer vfy1vmyrfsegaywsniv2jdfpvjbm0x",
+    Authorization: "Bearer k6tqiesijg0nn50ozc0kitt405g5dv",
   },
   body: "fields summary,platforms.*,rating,first_release_date,genres.name,screenshots.*,name,cover.*;where cover!=null & themes != (42) & first_release_date <= 631152000 & rating != null;limit 400; ",
 };
@@ -43,6 +43,7 @@ const randomGameIndexes = generateRandomGameIndexes();
 request(gameOptionsReq, function (error, response, body) {
   if (!error && response.statusCode == 200) {
     const parsedApiData = JSON.parse(body);
+
     const sliderGamesData = getSliderGameData(parsedApiData);
     randomSliderGames = sliderGamesData;
   }
@@ -55,4 +56,4 @@ const serverForSendingSliderGames = http.createServer((req, res) => {
   res.end(JSON.stringify(randomSliderGames));
 });
 
-serverForSendingSliderGames.listen(process.env.PORT || 5001, () => {});
+serverForSendingSliderGames.listen(5002);
